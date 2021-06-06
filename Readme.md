@@ -65,4 +65,7 @@ m.save('sample.stl')
 ```
 
 __View of STL file__
+
+
+
 <img src='./files/stl-view.PNG'>
