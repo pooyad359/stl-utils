@@ -1,3 +1,9 @@
+# Introduction
+This library can be used to quickly generate stl files from grid numpy arrays.
+
+## Step 1: Create a grid
+
+
 ```python
 from stl_utils import grid2vec,show_vec,vec2mesh
 import numpy as np
@@ -18,6 +24,8 @@ z = x**2+y**2
 grids = np.stack([x,y,z],axis=2)
 ```
 
+## Turn grid into vectors
+
 
 ```python
 vec = grid2vec(grids)
@@ -25,13 +33,16 @@ vec = grid2vec(grids)
 
 
 ```python
+# Visualize the created vectors before saving it
 ax=show_vec(vec)
 
 ```
 
 
-![png](files/output_4_0.png)
+![png](files/vis.png)
 
+
+## Turn the grid into Mesh
 
 
 ```python
@@ -46,7 +57,12 @@ m
 
 
 
+## Save as STL file
+
 
 ```python
 m.save('sample.stl')
 ```
+
+__View of STL file__
+<img src='./files/stl-view.PNG'>
