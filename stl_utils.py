@@ -1,3 +1,10 @@
+from mpl_toolkits import mplot3d
+import matplotlib.pyplot as plt
+from matplotlib.transforms import Bbox
+import numpy as np
+from stl import mesh
+
+
 def grid2vec(grid, base_level=None):
     '''
     grid: NxMx3 array containing x, y, and z values.
@@ -82,10 +89,19 @@ def show_vec(vectors):
     3D visualization of a set of STL vectors.
     '''
     
-    figure = pyplot.figure()
+    figure = plt.figure()
     axes = mplot3d.Axes3D(figure)
     for vec in vectors:
         axes.add_collection3d(mplot3d.art3d.Poly3DCollection(vec))
+    
+    xmin=vectors[:,:,0].min()
+    xmax=vectors[:,:,0].max()
+    ymin=vectors[:,:,1].min()
+    ymax=vectors[:,:,1].max()
+    zmin=vectors[:,:,2].min()
+    zmax=vectors[:,:,2].max()
+    axes.xy_viewLim = Bbox([[xmin,ymin],[xmax,ymax]])
+    axes.zz_viewLim= Bbox([[zmin,zmin],[zmax,zmax]])
     return axes
 
 
